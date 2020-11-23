@@ -5,7 +5,7 @@ import "./Row.css";
 
 class Row extends React.Component {
   state = {
-    movieDetails: {},
+    movieDetails: [],
     loading: true,
   };
   componentDidMount = async () => {
@@ -18,17 +18,14 @@ class Row extends React.Component {
       let response = await fetch(this.props.fetchUrl);
       if (response.ok) {
         let results = await response.json();
-
         setTimeout(() => {
           this.setState({ movieDetails: results.Search, loading: false });
         }, 1000);
-        console.log(results.Search);
       } else {
         console.log("an error happened!");
         this.setState({ loading: false });
       }
     } catch (e) {
-      console.log(e);
       this.setState({ loading: false });
     }
   };
@@ -36,13 +33,12 @@ class Row extends React.Component {
   render() {
     return (
       <div className="row">
-        <h2>{this.props.title}</h2>
+        <h2>{this.props.title}</h2><span>{this.state.loading? (<div>Loading.....</div>)}</span>
         <div className="row_posters">
           {this.state.movieDetails.map((movie, index) => {
-            console.log(2);
-            return (
+              return (
               <img
-                key={movie.index}
+                key={index}
                 className="row_poster"
                 src={movie.Poster}
                 alt={movie.Type}
