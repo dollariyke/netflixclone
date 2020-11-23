@@ -1,3 +1,6 @@
+.row {
+  margin-left: 20px;
+}
 .row_posters {
   display: flex;
   overflow-y: hidden;
@@ -7,7 +10,7 @@
 
 .row_poster {
   width: 100%;
-  max-height: 150px;
+  max-height: 100px;
   object-fit: contain;
   margin-right: 15px;
   transition: transform 450ms;
@@ -17,6 +20,13 @@
   transform: scale(1.08);
 }
 
-< .row_posters::-webkit-scrollbar {
+.row_posters::-webkit-scrollbar {
   display: none;
+}
+
+.row_posterLarge {
+  max-height: 250px;
+}
+.row_posterLarge:hover {
+  transform: scale(1.09);
 }
