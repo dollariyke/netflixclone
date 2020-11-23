@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
 import Row from "./Row";
-import requests from "./request";
 
 function App() {
   return (
@@ -10,12 +9,20 @@ function App() {
       {/**Banner */}
       {/**Each row is going to have a different request from others as you can see */}
       <Row
-        title="Netflix Originals"
-        fetchUrl={requests.fetchNetflixOriginal}
+        title="Harrypotter"
+        fetchUrl={"http://www.omdbapi.com/?apikey=fef030f5&s=harry%20potter"}
         isLargeRow
       />
-      <Row title="Netflix Trending" fetchUrl={requests.fetchTrending} />
-      <Row title="Top rated" fetchUrl={requests.fetchTopRated} />
+      <Row
+        title="Batman"
+        fetchUrl={"http://www.omdbapi.com/?apikey=fef030f5&s=batman"}
+      />
+      <Row
+        title="Lord Of The Ring"
+        fetchUrl={
+          "http://www.omdbapi.com/?apikey=fef030f5&s=lord%20of%20the%20ring"
+        }
+      />
     </div>
   );
 }
