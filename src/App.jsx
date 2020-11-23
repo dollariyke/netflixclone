@@ -10,17 +10,17 @@ function App() {
       {/**Each row is going to have a different request from others as you can see */}
       <Row
         title="Harrypotter"
-        fetchUrl={"http://www.omdbapi.com/?apikey=fef030f5&s=harry%20potter"}
+        fetchUrl={"https://www.omdbapi.com/?apikey=fef030f5&s=harry%20potter"}
         isLargeRow
       />
       <Row
         title="Batman"
-        fetchUrl={"http://www.omdbapi.com/?apikey=fef030f5&s=batman"}
+        fetchUrl={"https://www.omdbapi.com/?apikey=fef030f5&s=batman"}
       />
       <Row
         title="Lord Of The Ring"
         fetchUrl={
-          "http://www.omdbapi.com/?apikey=fef030f5&s=lord%20of%20the%20ring"
+          "https://www.omdbapi.com/?apikey=fef030f5&s=lord%20of%20the%20ring"
         }
       />
     </div>
