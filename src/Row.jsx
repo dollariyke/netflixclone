@@ -1,52 +1,58 @@
 /** This component is for building the different row categories of the netflixclone website. */
-import React, { useState, useEffect } from "react";
-import axios from "./axios";
+
+import React from "react";
 import "./Row.css";
-const base_url = "https://image.tmdb.org/t/p/original/";
 
-function Row({ title, fetchUrl, isLargeRow }) {
-  const [movies, setMovies] = useState([]);
-  // A snippet of code which runs based on a specific condition/variable.
-  // We want to be able to pull information from an API so we will use UseEffect to retrieve information and feed the rows.
-  // If the [] is left blank, it will run once when the page loads and dont run again
+class Row extends React.Component {
+  state = {
+    movieDetails: {},
+    loading: true,
+  };
+  componentDidMount = async () => {
+    this.fetchMovie();
+  };
 
-  useEffect(() => {
-    // you will have to run an async function to fetch the data,
+  fetchMovie = async () => {
+    this.setState({ loading: true });
+    try {
+      let response = await fetch(this.props.fetchUrl);
+      if (response.ok) {
+        let results = await response.json();
 
-    async function fetchData() {
-      const request = await axios.get(fetchUrl);
-      //axios has created the baseURL already and the above code will attach the fetchUrl string to the baseUrl, so that the complete fetch will be done
-      setMovies(request.data.results);
-      //The above method hold the data that is passed into the moves variable as an array
-      return request;
+        setTimeout(() => {
+          this.setState({ movieDetails: results.Search, loading: false });
+        }, 1000);
+        console.log(results.Search);
+      } else {
+        console.log("an error happened!");
+        this.setState({ loading: false });
+      }
+    } catch (e) {
+      console.log(e);
+      this.setState({ loading: false });
     }
-    //Then call the function
-    fetchData();
-  }, [fetchUrl]);
-  //whenever there is a variable passed from outside the block and used in the asynchronous function you must pass it into the empty array bracket.
-  console.log(movies);
-  return (
-    <div className="row">
-      {/**title */}
-      <h2>{title}</h2>
-      {/**Container Poster*/}
-      <div className="row_posters">
-        {/**several row-posters*/}
-        {movies.map((movie) => {
-          return (
-            <img
-              key={movie.id}
-              className={`row_poster ${isLargeRow && "row_posterLarge"}`}
-              src={`${base_url}${
-                isLargeRow ? movie.poster_path : movie.backdrop_path
-              }`}
-              alt={movie.name}
-            />
-          );
-        })}
+  };
+
+  render() {
+    return (
+      <div className="row">
+        <h2>{this.props.title}</h2>
+        <div className="row_posters">
+          {this.state.movieDetails.map((movie, index) => {
+            console.log(2);
+            return (
+              <img
+                key={movie.index}
+                className="row_poster"
+                src={movie.Poster}
+                alt={movie.Type}
+              />
+            );
+          })}
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default Row;
