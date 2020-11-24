@@ -5,7 +5,7 @@ import "./Row.css";
 
 class Row extends React.Component {
   state = {
-    movieDetails: {},
+    movieDetails: [],
     loading: true,
   };
   componentDidMount = async () => {
@@ -22,7 +22,6 @@ class Row extends React.Component {
         setTimeout(() => {
           this.setState({ movieDetails: results.Search, loading: false });
         }, 1000);
-        console.log(results.Search);
       } else {
         console.log("an error happened!");
         this.setState({ loading: false });
@@ -39,10 +38,9 @@ class Row extends React.Component {
         <h2>{this.props.title}</h2>
         <div className="row_posters">
           {this.state.movieDetails.map((movie, index) => {
-            console.log(2);
             return (
               <img
-                key={movie.index}
+                key={index}
                 className="row_poster"
                 src={movie.Poster}
                 alt={movie.Type}
