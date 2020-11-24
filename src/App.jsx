@@ -1,12 +1,16 @@
 import React from "react";
 import "./App.css";
 import Row from "./Row";
+import Banner from "./Banner";
+import Nav from "./Nav.css";
 
 function App() {
   return (
     <div className="App">
       {/**Navbar */}
+      <Nav />
       {/**Banner */}
+      <Banner />
       {/**Each row is going to have a different request from others as you can see */}
       <Row
         title="Harrypotter"
@@ -19,9 +23,7 @@ function App() {
       />
       <Row
         title="Lord Of The Ring"
-        fetchUrl={
-          "http://www.omdbapi.com/?apikey=fef030f5&s=lord%20of%20the%20ring"
-        }
+        fetchUrl={"http://www.omdbapi.com/?apikey=fef030f5&s=horror"}
       />
     </div>
   );
