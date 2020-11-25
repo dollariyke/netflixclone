@@ -22,8 +22,8 @@ function App() {
         fetchUrl={"http://www.omdbapi.com/?apikey=fef030f5&s=batman"}
       />
       <Row
-        title="Lord Of The Ring"
-        fetchUrl={"http://www.omdbapi.com/?apikey=fef030f5&s=horror"}
+        title="Spider Man"
+        fetchUrl={"http://www.omdbapi.com/?apikey=fef030f5&s=spider%20man"}
       />
     </div>
   );
