@@ -37,7 +37,7 @@ class Row extends React.Component {
       <div className="row">
         <h2>{this.props.title}</h2>
         <div className="row_posters">
-          {this.state.movieDetails.map((movie, index) => {
+          {this.state.movieDetails.slice(0, 8).map((movie, index) => {
             return (
               <img
                 key={index}
