@@ -3,6 +3,7 @@ import "./App.css";
 import Row from "./Row";
 import Banner from "./Banner";
 import NavBar from "./NavBar.jsx";
+import { BrowswerRouter as Router, Route } from "react-router-dom";
 
 function App() {
   return (
